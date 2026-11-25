@@ -1,0 +1,17 @@
+# Python & virtual environment
+venv/
+__pycache__/
+*.pyc
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Local databases
+*.db
+*.db-shm
+*.db-wal
+
+# OS files
+.DS_Store

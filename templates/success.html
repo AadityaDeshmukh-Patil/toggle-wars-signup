@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Acme Cloud – Signup Completed</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #FAF3EE;
+      color: #161615;
+    }
+    .font-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .gallery-shadow {
+      box-shadow: 0 24px 48px -12px rgba(92, 88, 85, 0.08), 0 4px 12px -2px rgba(92, 88, 85, 0.04);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 sm:p-6 antialiased selection:bg-[#2F484D] selection:text-white relative overflow-hidden">
+
+  <!-- Soft Watercolor Organic Mist Accents in Opposite Corners -->
+  <div class="fixed -top-24 -left-24 w-[36rem] h-[36rem] rounded-full pointer-events-none filter blur-3xl opacity-100 z-0"
+       style="background: radial-gradient(circle, rgba(47, 72, 77, 0.12) 0%, rgba(47, 72, 77, 0) 70%);"></div>
+  <div class="fixed -bottom-24 -right-24 w-[40rem] h-[40rem] rounded-full pointer-events-none filter blur-3xl opacity-100 z-0"
+       style="background: radial-gradient(circle, rgba(228, 191, 179, 0.22) 0%, rgba(228, 191, 179, 0) 70%);"></div>
+
+  <div class="w-full max-w-lg mx-auto relative z-10">
+    <div class="bg-white border border-[#E5DCD5] rounded-3xl p-8 sm:p-12 gallery-shadow text-center space-y-6">
+      
+      <!-- Elegant Gallery Monogram / Success Emblem -->
+      <div class="w-16 h-16 rounded-full border border-[#DCD3CC] bg-[#FDFBF9] text-[#2F484D] mx-auto flex items-center justify-center shadow-sm">
+        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+
+      <div>
+        <span class="inline-block text-[11px] font-semibold tracking-[0.14em] uppercase text-[#2F484D] mb-2">
+          Registration Complete
+        </span>
+        <h1 class="font-serif text-3xl sm:text-4xl font-bold text-[#161615] tracking-tight">
+          Welcome to Acme Cloud
+        </h1>
+        <p class="text-sm text-[#5C5855] mt-2.5 leading-relaxed">
+          Welcome aboard, <strong class="text-[#161615]">{{ full_name or 'Explorer' }}</strong>. Your 14-day cloud trial has been provisioned.
+        </p>
+      </div>
+
+      <!-- Telemetry Metadata Card -->
+      <div class="bg-[#FDFBF9] border border-[#DCD3CC] rounded-2xl p-5 text-left text-xs space-y-2.5">
+        <div class="flex justify-between items-center text-[#5C5855]">
+          <span class="text-[10px] uppercase tracking-[0.14em] font-semibold">Visitor Identifier</span>
+          <span class="font-mono text-[#161615] font-semibold">{{ user_id }}</span>
+        </div>
+        <div class="flex justify-between items-center text-[#5C5855] pt-1 border-t border-[#E5DCD5]/60">
+          <span class="text-[10px] uppercase tracking-[0.14em] font-semibold">Form Variant</span>
+          <span class="font-mono font-semibold {% if variant == 'three_fields' %}text-[#2F484D]{% else %}text-[#A64B58]{% endif %}">
+            {{ variant }}
+          </span>
+        </div>
+        <div class="flex justify-between items-center text-[#5C5855] pt-1 border-t border-[#E5DCD5]/60">
+          <span class="text-[10px] uppercase tracking-[0.14em] font-semibold">Conversion Event</span>
+          <span class="font-mono text-[11px] font-semibold {% if flagsmith_tracked %}text-[#2F484D]{% else %}text-[#5C5855]{% endif %}">
+            signup_completed {% if flagsmith_tracked %}✓ Dispatched{% else %}✓ SQLite Recorded{% endif %}
+          </span>
+        </div>
+        <div class="flex justify-between items-center text-[#5C5855] pt-1 border-t border-[#E5DCD5]/60">
+          <span class="text-[10px] uppercase tracking-[0.14em] font-semibold">Lead Qualification</span>
+          <span class="font-mono text-[11px] font-semibold {% if lead_qualified %}text-[#2F484D]{% else %}text-[#5C5855]{% endif %}">
+            {% if lead_qualified %}★ Qualified Lead (High Intent){% else %}Standard Self-Serve{% endif %}
+          </span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="space-y-3 pt-2">
+        <a href="/stats" class="block w-full py-3.5 px-6 rounded-xl bg-[#161615] hover:bg-[#2F484D] text-white font-medium text-xs tracking-wider uppercase transition shadow-md shadow-[#161615]/10">
+          View Experiment Analytics Dashboard →
+        </a>
+
+        <a href="/" class="block w-full py-3 px-6 rounded-xl bg-white hover:bg-[#FAF3EE] text-[#5C5855] hover:text-[#161615] font-medium text-xs tracking-wider uppercase border border-[#E5DCD5] transition">
+          ← Test Another Signup Variant
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
